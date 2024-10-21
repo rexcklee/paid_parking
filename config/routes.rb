@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "hourly_rates/index"
+  get "hourly_rates/show"
   get "streets/index"
   get "streets/show"
   get "time_limits/index"
