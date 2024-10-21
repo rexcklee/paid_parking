@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "business_zones/index"
+  get "business_zones/show"
   get "hourly_rates/index"
   get "hourly_rates/show"
   get "streets/index"
