@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
-  resources :parking_spots, only: %i[index show]
-
-  resources :business_zones, only: %i[index show]
-
-  resources :hourly_rates, only: %i[index show]
-
-  resources :streets, only: %i[index show]
-
-  resources :time_limits, only: %i[index show]
-
+  # resources :parking_spots, only: %i[index show]
+  get "parking_spots/index"
+  get "parking_spots/show"
+  # resources :business_zones, only: %i[index show]
+  get "business_zones/index"
+  get "business_zones/show"
+  # resources :hourly_rates, only: %i[index show]
+  get "hourly_rates/index"
+  get "hourly_rates/show"
+  # resources :streets, only: %i[index show]
+  get "streets/index"
+  get "streets/show"
+  # resources :time_limits, only: %i[index show]
+  get "time_limits/index"
+  get "time_limits/show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
