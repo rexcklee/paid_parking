@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "streets/index"
+  get "streets/show"
   get "time_limits/index"
   get "time_limits/show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
