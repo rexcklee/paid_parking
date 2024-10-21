@@ -1,0 +1,2 @@
+class BusinessZone < ApplicationRecord
+end
