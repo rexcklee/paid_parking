@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_21_151700) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_22_031557) do
   create_table "business_zones", force: :cascade do |t|
     t.string "zone_name"
     t.datetime "created_at", null: false
@@ -21,6 +21,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_21_151700) do
     t.string "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "parking_spot_pay_types", force: :cascade do |t|
+    t.integer "parking_spot_id", null: false
+    t.integer "pay_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parking_spot_id"], name: "index_parking_spot_pay_types_on_parking_spot_id"
+    t.index ["pay_type_id"], name: "index_parking_spot_pay_types_on_pay_type_id"
   end
 
   create_table "parking_spots", force: :cascade do |t|
@@ -40,6 +49,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_21_151700) do
     t.index ["time_limit_id"], name: "index_parking_spots_on_time_limit_id"
   end
 
+  create_table "pay_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "streets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -52,6 +67,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_21_151700) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "parking_spot_pay_types", "parking_spots"
+  add_foreign_key "parking_spot_pay_types", "pay_types"
   add_foreign_key "parking_spots", "business_zones"
   add_foreign_key "parking_spots", "hourly_rates"
   add_foreign_key "parking_spots", "streets"
