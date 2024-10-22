@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require "csv"
+require 'faker'
 
 ParkingSpotPayType.delete_all
 PayType.delete_all
@@ -43,5 +44,17 @@ parking_spots[0..9].each do |parking_spot|
             hourly_rate_id: hourly_rate.id,
             business_zone_id: business_zone.id
         )
+
+        if !new_parking_spot&.valid?
+            puts "Failed to create parking spot: #{parking_spot["Block Number"]}"
+            next
+        end
+
+        #paytype
+        rand(0...5).times do
+            pay_type = PayType.find_or_create_by(name: Faker::Subscription.unique.payment_method)
+            ParkingSpotPayType.create(parking_spot: new_parking_spot, pay_type:pay_type)
+        end
+        Faker::Subscription.unique.clear
     end    
 end
