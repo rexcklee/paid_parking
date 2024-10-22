@@ -25,5 +25,23 @@ csv_data = File.read(filename)
 parking_spots = CSV.parse(csv_data, headers: true, encoding: "utf-8")
 
 parking_spots[0..9].each do |parking_spot|
-    puts parking_spot["Block Number"]
+    street = Street.find_or_create_by(name: parking_spot["Street"])
+
+    time_limit = TimeLimit.find_or_create_by(time_period: parking_spot["Time Limit"])
+
+    hourly_rate = HourlyRate.find_or_create_by(rate: parking_spot["Hourly Rate"])
+
+    business_zone = BusinessZone.find_or_create_by(zone_name: parking_spot["Business Zone"])
+
+    if street&.valid?
+        new_parking_spot = street.parking_spots.create(
+            block_number: parking_spot["Block Number"],
+            payment_time: parking_spot["Payment Time"],
+            total_space: parking_spot["Total Space"].to_i,
+            mobile_payment_number: parking_spot["Mobile Payment Number"].to_i,
+            time_limit_id: time_limit.id,
+            hourly_rate_id: hourly_rate.id,
+            business_zone_id: business_zone.id
+        )
+    end    
 end
