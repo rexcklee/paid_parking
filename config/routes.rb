@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   # resources :streets, only: %i[index show]
   get 'streets' => 'streets#index', as: 'streets'
   get "streets/index"
-  get "streets/show"
+  get "/streets/:id", to: "streets#show", as: "street", constraints: { id: /\d+/ }
+
   # resources :time_limits, only: %i[index show]
   get "time_limits/index"
   get "time_limits/show"

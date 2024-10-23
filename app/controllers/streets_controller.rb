@@ -4,5 +4,6 @@ class StreetsController < ApplicationController
   end
 
   def show
+    @street = Street.find(params[:id])
   end
 end

@@ -1,2 +1,33 @@
-<h1>Streets#show</h1>
-<p>Find me in app/views/streets/show.html.erb</p>
+<h1 class="text-3xl mb-3">Street - <%= @street.name %> </h1>
+<p class="text-xl mb-3">Number of parking spots : <%= @street.parking_spots.count %></p>
+<table class="border border-collapse">
+  <thead>
+    <tr>
+      <th class="border">Block Number</th>
+      <th class="border">Time Limit</th>
+      <th class="border">Street</th>
+      <th class="border">Payment Time</th>
+      <th class="border">Total Space</th>
+      <th class="border">Hourly Rate</th>
+      <th class="border">Mobile Payment Number</th>
+      <th class="border">Business Zone</th>
+      <th class="border">Pay Type</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @street.parking_spots.each do |parking_spot| %>
+      <tr >
+        <td class="text-center text-yellow-500 hover:text-orange-500"><%= link_to parking_spot.block_number, parking_spot %></td>
+        <td class="text-center"><%= parking_spot.time_limit.time_period %></td>
+        <td class="text-center"><%= parking_spot.street.name %></td>
+        <td class="text-center"><%= parking_spot.payment_time %></td>
+        <td class="text-center"><%= parking_spot.total_space %></td>
+        <td class="text-center"><%= number_to_currency parking_spot.hourly_rate.rate %></td>
+        <td class="text-center"><%= parking_spot.mobile_payment_number %></td>
+        <td class="text-center"><%= parking_spot.business_zone.zone_name %></td>
+        <td class="text-center"><%= parking_spot.pay_types_list %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
