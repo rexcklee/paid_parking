@@ -25,7 +25,7 @@ csv_data = File.read(filename)
 
 parking_spots = CSV.parse(csv_data, headers: true, encoding: "utf-8")
 
-parking_spots[0..9].each do |parking_spot|
+parking_spots[0..99].each do |parking_spot|
     street = Street.find_or_create_by(name: parking_spot["Street"])
 
     time_limit = TimeLimit.find_or_create_by(time_period: parking_spot["Time Limit"])

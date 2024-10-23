@@ -21,7 +21,7 @@
   <tbody>
     <% @parking_spots.each do |parking_spot| %>
       <tr>
-        <td><%= parking_spot.block_number %></td>
+        <td><%= link_to parking_spot.block_number, parking_spot %></td>
         <td><%= parking_spot.time_limit.time_period %></td>
         <td><%= parking_spot.street.name %></td>
         <td><%= parking_spot.payment_time %></td>
