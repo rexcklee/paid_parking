@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "parking_spots/index"
   get "/parking_spots/:id", to: "parking_spots#show", as: "parking_spot", constraints: { id: /\d+/ }
 
+  get "/parking_spots/search/", to: "parking_spots#search", as: "parking_spots_search"
+
   # resources :business_zones, only: %i[index show]
   get "business_zones/index"
   get "business_zones/show"
