@@ -2,6 +2,6 @@
 <p class="text-xl mb-3">Number of streets : <%= @streets.count %></p>
 <% @streets.each do |street| %>
   <ul class="text-xl">
-    <li class="text-center mb-2 text-yellow-500 hover:text-orange-500"><%= link_to street.name, street %></li>
+    <li class="text-center mb-2 text-yellow-500 hover:text-orange-500"><%= link_to street.name, street %> (<%= pluralize street.parking_spots.count, "spot" %>)</li>
   </ul>
 <% end %>
