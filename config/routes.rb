@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   # resources :time_limits, only: %i[index show]
   get "time_limits/index"
   get "time_limits/show"
+
+  get 'about_page' => 'about_page#index', as: 'about_page'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
