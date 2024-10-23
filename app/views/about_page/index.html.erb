@@ -1,1 +1,17 @@
-<p>This is the about page</p>
+<div class="flex flex-col">
+    <div class="text-3xl text-center mb-10">
+        <h1>About the project</h1>
+    </div>
+    <div class="text-2xl mb-10">
+        <p class="mb-5">Data source from the City of Winnipeg was selected for the project. The dataset is about “Block by Block On-Street Paid Parking” and represents parking allocations and restrictions by block faces using pay-by-phone (as an alternative to parking by pay stations).</p>
+        <p class="mb-5">Data columns used include: <span class="text-orange-500"> Block Number, Restriction, Time Limit, Street, Payment Time, Total Space, Hourly Rate, Mobile Payment Number, Pay Type.</span></p>
+        <p class="mb-5">Columns not used: Center Point, Line.</p>
+        <p class="mb-5">The data from City of Winnipeg website can be exported in two different ways: CSV file download and API endpoint. I used the CSV file download to retrieve the dataset.</p>
+        <p class="mb-5">In my design, there is a parking spots table that holds data for each parking spot. Through normalization, the following columns with repeated data are set as separate tables: Time Limit, Street, Hourly Rate, and Business Zone (each having a one-to-many relationship with the parking spots table).</p>
+        <p class="mb-5">To create a “many-to-many” relationship, I used another data source, Faker, to generate different Pay Type values for each parking spot. I then created a separate Pay Type table and a ParkingSpot-PayType relationship table.</p>
+        <p class="text-orange-500">In summary, 2 data sources were used. 7 Active Record models and tables were created, with 4 one-to-many relationships and 1 many-to-many relationship.</p>
+    </div>
+    <div class="mx-auto mb-20">
+        <img src="/images/full_stack_intro_drawio.png" alt="rss feed" />
+    </div>
+</div>
