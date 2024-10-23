@@ -1,3 +1,36 @@
-<h1>ParkingSpots#index</h1>
-<p>Find me in app/views/parking_spots/index.html.erb</p>
 <p>Total parking spots : <%= @parking_spots.count %></p>
+<div>
+  <h1>Parking Spots</h1>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Block Number</th>
+      <th>Time Limit</th>
+      <th>Street</th>
+      <th>Payment Time</th>
+      <th>Total Space</th>
+      <th>Hourly Rate</th>
+      <th>Mobile Payment Number</th>
+      <th>Business Zone</th>
+      <th>Pay Type</th>
+      <th colspan="8"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parking_spots.each do |parking_spot| %>
+      <tr>
+        <td><%= parking_spot.block_number %></td>
+        <td><%= parking_spot.time_limit.time_period %></td>
+        <td><%= parking_spot.street.name %></td>
+        <td><%= parking_spot.payment_time %></td>
+        <td><%= parking_spot.total_space %></td>
+        <td><%= number_to_currency parking_spot.hourly_rate.rate %></td>
+        <td><%= parking_spot.mobile_payment_number %></td>
+        <td><%= parking_spot.business_zone.zone_name %></td>
+        <td><%= parking_spot.pay_types_list %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
