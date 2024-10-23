@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "hourly_rates/index"
   get "hourly_rates/show"
   # resources :streets, only: %i[index show]
+  get 'streets' => 'streets#index', as: 'streets'
   get "streets/index"
   get "streets/show"
   # resources :time_limits, only: %i[index show]
@@ -29,5 +30,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root to: "parking_spots#index"
 end

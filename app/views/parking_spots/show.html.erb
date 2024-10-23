@@ -1,2 +1,12 @@
-<h1>ParkingSpots#show</h1>
-<p>Find me in app/views/parking_spots/show.html.erb</p>
+<h1 class="mb-10 text-3xl">Parking Spot - <%= @parking_spot.block_number %> </h1>
+
+<div class="text-xl">
+  <p class="mb-3">Time Limit: <%= @parking_spot.time_limit.time_period %></p>
+  <p class="mb-3">Street: <%= @parking_spot.street.name %></p>
+  <p class="mb-3">Payment Time: <%= @parking_spot.payment_time %></p>
+  <p class="mb-3">Total Space: <%= @parking_spot.total_space %></p>
+  <p class="mb-3">Hourly Rate: <%= number_to_currency @parking_spot.hourly_rate.rate %></p>
+  <p class="mb-3">Mobile Payment Number: <%= @parking_spot.mobile_payment_number %></p>
+  <p class="mb-3">Business Zone: <%= @parking_spot.business_zone.zone_name %></p>
+  <p class="mb-3">Pay Type: <%= @parking_spot.pay_types_list %></p>
+</div>
