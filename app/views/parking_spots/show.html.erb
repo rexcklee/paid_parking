@@ -2,7 +2,7 @@
 
 <div class="text-xl">
   <p class="mb-3">Time Limit: <span class="text-red-400"><%= @parking_spot.time_limit.time_period %></span></p>
-  <p class="mb-3">Street: <span class="text-red-400"><%= @parking_spot.street.name %></span></p>
+  <p class="mb-3">Street: <span class="text-orange-300 hover:text-yellow-400"><%= link_to @parking_spot.street.name, @parking_spot.street %></span></p>
   <p class="mb-3">Payment Time: <span class="text-red-400"><%= @parking_spot.payment_time %></span></p>
   <p class="mb-3">Total Space: <span class="text-red-400"><%= @parking_spot.total_space %></span></p>
   <p class="mb-3">Hourly Rate: <span class="text-red-400"><%= number_to_currency @parking_spot.hourly_rate.rate %></span></p>
