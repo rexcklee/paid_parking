@@ -8,7 +8,11 @@ class ParkingSpotsController < ApplicationController
   end
 
   def search
-    wildcard_search = "%#{params[:keywords]}%"
-    @parking_spots = ParkingSpot.joins(:street).where("streets.name LIKE ?", wildcard_search)
+    keywords_search = "%#{params[:keywords]}%"
+    if params[:hourly_rate] == "All"
+      @parking_spots = ParkingSpot.joins(:street).where("streets.name LIKE ?", keywords_search)
+    else
+      @parking_spots = ParkingSpot.joins(:street).where("streets.name LIKE ?", keywords_search).joins(:hourly_rate).where("hourly_rates.rate LIKE ?", params[:hourly_rate])
+    end
   end
 end
