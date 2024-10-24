@@ -7,8 +7,7 @@ class ParkingSpot < ApplicationRecord
   has_many :parking_spot_pay_types
   has_many :pay_types, through: :parking_spot_pay_types
 
-  validates :block_number, :mobile_payment_number, presence: true, uniqueness: true
-  validates :payment_time, presence: true
+  validates :mobile_payment_number, :block_number, :payment_time, presence: true
   validates :total_space, presence: true, numericality: { only_integer: true }
 
   def pay_types_list
