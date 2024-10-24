@@ -51,7 +51,7 @@ parking_spots[0..99].each do |parking_spot|
         end
 
         #paytype
-        rand(0...5).times do
+        rand(1...5).times do
             pay_type = PayType.find_or_create_by(name: Faker::Subscription.unique.payment_method)
             ParkingSpotPayType.create(parking_spot: new_parking_spot, pay_type:pay_type)
         end
